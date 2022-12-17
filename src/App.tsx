@@ -1,10 +1,12 @@
+import GlobalStyle from "./theme/GlobalStyle";
+
 function App() {
 
   return (
-    <div className="App">
-
-    </div>
+      <>
+        <GlobalStyle />
+      </>
   )
 }
 
-export default App
+export default App;
