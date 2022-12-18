@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
 
-const StyledSearchBar = styled.div`
+interface StyledTypes {
+  isFilled: boolean;
+}
+
+const StyledSearchBar = styled.div<StyledTypes>`
   position: relative;
   height: 100%;
   width: 100%;
@@ -19,7 +23,7 @@ const StyledSearchBar = styled.div`
     border: 2px solid var(--blue);
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: ${(p) => (p.isFilled ? 'var(--h:ighlight)' : 'var(--shadow)')};
     transition: all 0.2s;
 
     &:focus {
@@ -76,7 +80,7 @@ function SearchBar({ setString, string }: PropsTypes) {
   };
 
   return (
-    <StyledSearchBar>
+    <StyledSearchBar isFilled={string.length > 2}>
       <input
         type='text'
         value={string}
