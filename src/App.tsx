@@ -4,15 +4,15 @@ import RaMLogo from './assets/ramLogo.png';
 import Loader from './components/common/Loader';
 
 function App() {
-    return (
-        <>
-            <GlobalStyle />
-            <Layout>
-                <img src={RaMLogo} alt='logo' />
-                <Loader />
-            </Layout>
-        </>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      <Layout>
+        <img src={RaMLogo} alt='logo' />
+        <Loader size='150px' />
+      </Layout>
+    </>
+  );
 }
 
 export default App;
