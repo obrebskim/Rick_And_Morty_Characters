@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: linear-gradient(180deg, rgba(38,44,58,1) 30%, rgba(2,136,104,1) 100%);
     min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
   }
 `;
 
