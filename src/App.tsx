@@ -1,16 +1,15 @@
 import GlobalStyle from './theme/GlobalStyle';
 import Layout from './components/Layout/Layout';
-import RaMLogo from './assets/ramLogo.png';
 import Loader from './components/common/Loader';
-import { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
+import Logo from './components/common/Logo';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Layout>
-        <img src={RaMLogo} alt='logo' />
+        <Logo width='100%' />
         <Navbar />
         <Loader size='150px' />
       </Layout>

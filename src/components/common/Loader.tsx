@@ -11,14 +11,21 @@ const StyledLoader = styled.div<StyledTypes>`
   height: 100%;
   display: grid;
   place-items: center;
-  gap: 10px;
-  & > img {
-    width: ${(p) => p.size};
-    height: ${(p) => p.size};
-  }
-  & > p {
-    font-size: 1.6rem;
-    color: var(--green);
+  & .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    & > img {
+      width: ${(p) => p.size};
+      height: ${(p) => p.size};
+    }
+    & > p {
+      font-size: 1.6rem;
+      color: var(--blue);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
   }
 `;
 
@@ -29,8 +36,10 @@ interface PropsTypes {
 function Loader({ size = '250px' }: PropsTypes) {
   return (
     <StyledLoader size={size}>
-      <img src={LoadingImg} alt='' />
-      <p>Loading...</p>
+      <div className='wrapper'>
+        <img src={LoadingImg} alt='' />
+        <p>Loading...</p>
+      </div>
     </StyledLoader>
   );
 }

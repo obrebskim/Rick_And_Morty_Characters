@@ -5,13 +5,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
   }
 
   :root {
     --blue: #12B1CA;
     --green: #24DB93;
     --shadow: 0 0 12px rgba(0, 0, 0, .4);
-    --highlight: 0 0 12px rgba(0, 0, 0, .4) #24DB93;
+    --highlight: 0 0 12px  #12B1CA;
     --green_dark: #181C25;
     --red_dark: #8d3623;
   }

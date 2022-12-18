@@ -1,40 +1,51 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import logo from '../common/Logo';
 import Button from '../common/Button';
 
 const StyledSearchBar = styled.div`
+  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
 
   & input {
-    position: relative;
     height: 100%;
     width: 100%;
     padding: 5px 20px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    background-color: #181c25;
-    color: #24db93;
+    background-color: var(--green_dark);
+    color: var(--blue);
+    font-size: 1.6rem;
+    font-weight: bold;
+    border: 2px solid var(--blue);
+    border-radius: 5px;
     overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+
     &:focus {
-      border-left: 2px solid #12b1ca;
-      border-top: 2px solid #12b1ca;
-      border-bottom: 2px solid #12b1ca;
       outline: none;
-      &:focus + .button {
-        border-right: 2px solid #12b1ca;
-        border-top: 2px solid #12b1ca;
-        border-bottom: 2px solid #12b1ca;
-      }
+      box-shadow: var(--highlight);
+    }
+
+    &::placeholder {
+      color: var(--blue);
+      font-weight: normal;
+      font-size: 1.2rem;
     }
   }
 
   & > .button {
-    position: relative;
-    background-color: #181c25;
-    border-radius: 0 5px 5px 0;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    transform: none;
+    background-color: var(--green_dark);
+    border-radius: 0 2px 2px 0;
+
+    &:hover {
+      background-color: var(--blue);
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -42,11 +53,12 @@ const StyledSearchBar = styled.div`
       left: 0;
       bottom: 15%;
       width: 2px;
-      background-color: #0aa3be;
+      background-color: var(--blue);
     }
+
     &.active {
-      color: #181c25;
-      background-color: #12b1ca;
+      color: var(--green_dark);
+      background-color: var(--blue);
     }
   }
 `;
@@ -72,7 +84,13 @@ function SearchBar({ setString, string }: PropsTypes) {
         placeholder='Filter by name...'
         onKeyDown={(e) => handleKeyDown(e)}
       />
-      <Button label='🔍' height='60px' width='60px' onClick={() => console.log('search')} />
+      <Button
+        className='button'
+        label='🔍'
+        height='56px'
+        width='56px'
+        onClick={() => console.log('search')}
+      />
     </StyledSearchBar>
   );
 }

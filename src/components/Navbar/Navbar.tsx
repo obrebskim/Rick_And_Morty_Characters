@@ -9,11 +9,16 @@ const StyledNavBar = styled.nav`
   justify-content: flex-end;
 
   & > .button {
-    color: #12b1ca;
-    background-color: #181c25;
+    color: var(--blue);
+    background-color: var(--green_dark);
+    box-shadow: var(--shadow);
+    border: 2px solid var(--blue);
+    &:hover {
+      box-shadow: var(--highlight);
+    }
     &.active {
-      color: #181c25;
-      background-color: #12b1ca;
+      color: var(--green_dark);
+      background-color: var(--blue);
     }
   }
 `;
