@@ -1,8 +1,8 @@
 import GlobalStyle from './theme/GlobalStyle';
 import Layout from './components/Layout/Layout';
-import Loader from './components/common/Loader';
-import Navbar from './components/Navbar/Navbar';
 import Logo from './components/common/Logo';
+import Navbar from './components/Navbar/Navbar';
+import Error from './components/common/Error';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Layout>
         <Logo width='100%' />
         <Navbar />
-        <Loader size='150px' />
+        <Error size='150px' />
       </Layout>
     </>
   );
