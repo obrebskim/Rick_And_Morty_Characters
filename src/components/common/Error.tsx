@@ -38,7 +38,7 @@ function Error({ size = '250px' }: PropsTypes) {
     <StyledError size={size}>
       <div className='wrapper'>
         <img src={PortalPistolImg} alt='' />
-        <p>Something went terribly wrong and your data hit to another portal!</p>
+        <p>Something went terribly wrong and your data hitted to another portal!</p>
       </div>
     </StyledError>
   );

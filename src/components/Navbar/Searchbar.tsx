@@ -31,6 +31,10 @@ const StyledSearchBar = styled.div<StyledTypes>`
       box-shadow: var(--highlight);
     }
 
+    &:hover {
+      box-shadow: var(--highlight);
+    }
+
     &::placeholder {
       color: var(--blue);
       font-weight: normal;
