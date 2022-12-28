@@ -20,7 +20,7 @@ const StyledButton = styled.button<IStyled>`
   }
 `;
 
-interface IButton {
+interface IProps {
   label: string;
   onClick: () => void;
   isDisabled?: boolean;
@@ -36,7 +36,7 @@ function Button({
   width = '100%',
   height = '100%',
   className = '',
-}: IButton) {
+}: IProps) {
   return (
     <StyledButton
       disabled={isDisabled}

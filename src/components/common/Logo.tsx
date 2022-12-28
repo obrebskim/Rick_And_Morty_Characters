@@ -16,11 +16,11 @@ const StyledLogo = styled.section<IStyled>`
   }
 `;
 
-interface ILogo {
+interface IProps {
   width: string;
 }
 
-function Logo({ width }: ILogo) {
+function Logo({ width }: IProps) {
   return (
     <StyledLogo width={width}>
       <img src={ramLogo} alt='logo' />

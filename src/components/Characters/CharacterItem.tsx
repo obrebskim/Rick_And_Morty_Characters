@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Button from '../common/Button';
-import { Character } from '../../@types/CharacterInterface';
 import StyledCharacter from './CharacterItem.styled';
 import useFavouritesStore from '../../hooks/useFavouritesStore';
+import { Character } from '../../@types/CharacterInterface';
 
-interface ICharacter {
+interface IProps {
   character: Character;
 }
 
-function CharacterItem({ character }: ICharacter) {
+function CharacterItem({ character }: IProps) {
   const toggleFavourites = useFavouritesStore((state) => state.toggleFavourites);
   const [isFavourite, setIsFavourite] = useState<boolean>(character.favourite);
   const handleFavouriteChange = (id: number) => {

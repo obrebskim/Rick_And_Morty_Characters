@@ -29,11 +29,11 @@ const StyledError = styled.div<IStyled>`
   }
 `;
 
-interface IError {
+interface IProps {
   size?: string;
 }
 
-function Error({ size = '250px' }: IError) {
+function Error({ size = '250px' }: IProps) {
   return (
     <StyledError size={size}>
       <div className='wrapper'>

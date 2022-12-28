@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import useCharacters from '../../hooks/useCharacters';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
 import CharacterItem from './CharacterItem';
 import CharactersGrid from './CharactersGrid.styled';
 import Pagination from '../Pagination/Pagination';
+import useCharacters from '../../hooks/useCharacters';
 import useFavouritesStore from '../../hooks/useFavouritesStore';
 
 function Characters() {

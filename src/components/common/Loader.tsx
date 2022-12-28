@@ -29,11 +29,11 @@ const StyledLoader = styled.div<IStyled>`
   }
 `;
 
-interface ILoader {
+interface IProps {
   size: string;
 }
 
-function Loader({ size = '250px' }: ILoader) {
+function Loader({ size = '250px' }: IProps) {
   return (
     <StyledLoader size={size}>
       <div className='wrapper'>
