@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import SearchBar from './Searchbar';
+import clsx from 'clsx';
+import useCategoryStore from '../../hooks/useCategoryStore';
+import { ECategory } from '../../@types/CategoryEnum';
 
 const StyledNavBar = styled.nav`
   display: flex;
@@ -23,17 +26,24 @@ const StyledNavBar = styled.nav`
   }
 `;
 function Navbar() {
+  const category = useCategoryStore((state) => state.category);
+  const changeCategory = useCategoryStore((state) => state.changeCategory);
   const [search, setSearch] = useState('');
 
   return (
     <StyledNavBar>
       <SearchBar string={search} setString={setSearch} />
-      <Button label='All' width='200px' className='button' onClick={() => console.log('all')} />
+      <Button
+        label='All'
+        width='200px'
+        className={clsx('button', category === ECategory.all && 'active')}
+        onClick={() => changeCategory(ECategory.all)}
+      />
       <Button
         label='❤ Favourites'
         width='200px'
-        className='button active'
-        onClick={() => console.log('favourites')}
+        className={clsx('button', category === ECategory.favourites && 'active')}
+        onClick={() => changeCategory(ECategory.favourites)}
       />
     </StyledNavBar>
   );
