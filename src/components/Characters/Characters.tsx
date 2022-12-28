@@ -5,10 +5,11 @@ import Loader from '../common/Loader';
 import CharacterItem from './CharacterItem';
 import CharactersGrid from './CharactersGrid.styled';
 import Pagination from '../Pagination/Pagination';
+import useFavouritesStore from '../../hooks/useFavouritesStore';
 
 function Characters() {
+  const favourites = useFavouritesStore((state) => state.favourites);
   const [page, setPage] = useState(1);
-  const [favourites, setFavourites] = useState<number[]>([22]);
   const { isFetching, isError, data } = useCharacters({ page, favourites });
 
   if (isError) return <Error />;
