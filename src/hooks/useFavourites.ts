@@ -3,15 +3,17 @@ import getFavourites from '../api/getFavourites';
 
 const queryKey: QueryKey = ['favourites'];
 
-interface IDependencies {
+interface IProps {
   favourites: number[];
 }
 
-function useCharacters({ favourites }: IDependencies) {
+function useCharacters({ favourites }: IProps) {
   return useQuery(
     [queryKey, favourites],
-    async () =>
-      getFavourites(favourites).then((data) => data.map((ch) => ({ ...ch, favourite: true }))),
+    async () => {
+      const fav = await getFavourites(favourites);
+      return fav.map((ch) => ({ ...ch, favourite: true }));
+    },
     { placeholderData: [] },
   );
 }

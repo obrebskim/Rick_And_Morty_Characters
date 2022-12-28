@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
 import CharacterItem from './CharacterItem';
@@ -6,17 +6,20 @@ import CharactersGrid from './CharactersGrid.styled';
 import Pagination from '../Pagination/Pagination';
 import useCharacters from '../../hooks/useCharacters';
 import useFavouritesStore from '../../hooks/useFavouritesStore';
+import scrollToTopOfTheList from '../../utils/scrollToTopOfTheList';
 
 function Characters() {
   const [page, setPage] = useState(1);
   const favourites = useFavouritesStore((state) => state.favourites);
   const { isLoading, isError, data } = useCharacters({ page, favourites });
 
+  useEffect(() => {
+    scrollToTopOfTheList();
+  }, [data]);
+
   if (isError) return <Error />;
 
   if (isLoading) return <Loader size='160px' />;
-
-  console.log(data);
 
   return (
     <>

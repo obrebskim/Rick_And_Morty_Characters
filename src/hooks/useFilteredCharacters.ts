@@ -11,13 +11,13 @@ interface IProps {
 
 function useFilteredCharacters({ page, filter, favourites }: IProps) {
   return useQuery(
-    [queryKey, page],
+    [queryKey, page, filter],
     async () =>
       getFilteredCharacters(page, filter).then((data) => ({
         info: data.info,
         results: data.results.map((ch) => ({ ...ch, favourite: favourites.includes(ch.id) })),
       })),
-    { placeholderData: { info: {}, results: [] } },
+    { placeholderData: { info: { next: null, count: 0, pages: 0, prev: null }, results: [] } },
   );
 }
 

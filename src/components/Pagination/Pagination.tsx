@@ -15,10 +15,6 @@ enum EModifier {
 
 function Pagination({ page, setPage, lastPage }: IProps) {
   const handlePageChange = (modifier: EModifier) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
     switch (modifier) {
       case EModifier.up:
         return setPage((prevState) => prevState + 1);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
 import CharacterItem from './CharacterItem';
@@ -7,12 +7,17 @@ import Pagination from '../Pagination/Pagination';
 import useFilteredCharacters from '../../hooks/useFilteredCharacters';
 import useSearchString from '../../hooks/useSearchSring';
 import useFavouriteStore from '../../hooks/useFavouritesStore';
+import scrollToTopOfTheList from '../../utils/scrollToTopOfTheList';
 
 function FilteredCharacters() {
   const [page, setPage] = useState(1);
   const favourites = useFavouriteStore((state) => state.favourites);
   const filter = useSearchString((state) => state.string);
   const { isLoading, isError, data } = useFilteredCharacters({ page, filter, favourites });
+
+  useEffect(() => {
+    scrollToTopOfTheList();
+  }, [data]);
 
   if (isError) return <Error />;
 
