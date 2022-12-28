@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PortalPistolImg from '../../assets/portal_pistol.png';
 
-interface StyledTypes {
+interface IStyled {
   size: string;
 }
 
-const StyledError = styled.div<StyledTypes>`
+const StyledError = styled.div<IStyled>`
   width: 100%;
   height: 100%;
   display: grid;
@@ -29,16 +29,16 @@ const StyledError = styled.div<StyledTypes>`
   }
 `;
 
-interface PropsTypes {
+interface IError {
   size?: string;
 }
 
-function Error({ size = '250px' }: PropsTypes) {
+function Error({ size = '250px' }: IError) {
   return (
     <StyledError size={size}>
       <div className='wrapper'>
         <img src={PortalPistolImg} alt='' />
-        <p>Something went terribly wrong and your data hitted to another portal!</p>
+        <p>Something went terribly wrong and your data have hit to another portal!</p>
       </div>
     </StyledError>
   );

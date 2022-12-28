@@ -1,54 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
 import Button from '../common/Button';
+import StyledPagination from './Pagination.styled';
 
-const StyledPagination = styled.section`
-  display: flex;
-  gap: 50px;
-  justify-content: center;
-  align-items: center;
+interface IPagination {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+}
 
-  & .button {
-    width: 140px;
-    height: 60px;
-    font-size: 3rem;
-    color: var(--blue);
-    background-color: var(--green_dark);
-    box-shadow: var(--shadow);
-    border: 2px solid var(--blue);
-    &:hover {
-      box-shadow: var(--highlight);
+function Pagination({ page, setPage }: IPagination) {
+  const handlePageChange = (modifier: 'up' | 'down') => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    switch (modifier) {
+      case 'up':
+        return setPage((prevState) => prevState + 1);
+      case 'down':
+        return setPage((prevState) => prevState - 1);
+      default:
+        return;
     }
-    &:disabled {
-      opacity: 0.2;
-    }
-  }
+  };
 
-  & .page-info {
-    height: 60px;
-    width: 60px;
-    display: grid;
-    place-items: center;
-    background-color: var(--blue);
-    border-radius: 5px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--green_dark);
-    box-shadow: var(--shadow);
-  }
-`;
-
-function Pagination() {
   return (
     <StyledPagination>
       <Button
         label='◀'
-        isDisabled={true}
+        isDisabled={page <= 1}
         className='button'
-        onClick={() => console.log('side-down')}
+        onClick={() => handlePageChange('down')}
       />
-      <div className='page-info'>1</div>
-      <Button label='▶' className='button' onClick={() => console.log('side-up')} />
+      <div className='page-info'>{page}</div>
+      <Button label='▶' className='button' onClick={() => handlePageChange('up')} />
     </StyledPagination>
   );
 }

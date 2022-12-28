@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
 
-interface StyledTypes {
+interface IStyled {
   isFilled: boolean;
 }
 
-const StyledSearchBar = styled.div<StyledTypes>`
+const StyledSearchBar = styled.div<IStyled>`
   position: relative;
   height: 100%;
   width: 100%;
@@ -71,12 +71,12 @@ const StyledSearchBar = styled.div<StyledTypes>`
   }
 `;
 
-interface PropsTypes {
+interface ISearchBar {
   string: string;
   setString: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function SearchBar({ setString, string }: PropsTypes) {
+function SearchBar({ setString, string }: ISearchBar) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
       return console.log(string);

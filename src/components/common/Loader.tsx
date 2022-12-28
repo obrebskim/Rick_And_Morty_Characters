@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import LoadingImg from '../../assets/Loading.png';
 
-interface StyledTypes {
+interface IStyled {
   size: string;
 }
 
-const StyledLoader = styled.div<StyledTypes>`
+const StyledLoader = styled.div<IStyled>`
   width: 100%;
   height: 100%;
   display: grid;
@@ -29,11 +29,11 @@ const StyledLoader = styled.div<StyledTypes>`
   }
 `;
 
-interface PropsTypes {
+interface ILoader {
   size: string;
 }
 
-function Loader({ size = '250px' }: PropsTypes) {
+function Loader({ size = '250px' }: ILoader) {
   return (
     <StyledLoader size={size}>
       <div className='wrapper'>

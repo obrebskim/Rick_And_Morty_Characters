@@ -3,8 +3,21 @@ import getCharacters from '../api/getCharacters';
 
 const queryKey: QueryKey = ['characters'];
 
-function useCharacters() {
-  return useQuery(queryKey, getCharacters, {});
+interface IDependencies {
+  page: number;
+  favourites: number[];
 }
 
-export default useCharacters();
+function useCharacters({ page, favourites }: IDependencies) {
+  return useQuery(
+    [queryKey, page],
+    async () =>
+      getCharacters(page).then((data) => ({
+        info: data.info,
+        results: data.results.map((ch) => ({ ...ch, favourite: favourites.includes(ch.id) })),
+      })),
+    { placeholderData: { info: {}, results: [] } },
+  );
+}
+
+export default useCharacters;

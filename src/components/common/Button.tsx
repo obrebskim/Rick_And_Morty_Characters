@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface StyledTypes {
+interface IStyled {
   width: string;
   height: string;
 }
 
-const StyledButton = styled.button<StyledTypes>`
+const StyledButton = styled.button<IStyled>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   border-radius: 5px;
@@ -20,9 +20,9 @@ const StyledButton = styled.button<StyledTypes>`
   }
 `;
 
-interface PropsTypes {
+interface IButton {
   label: string;
-  onClick: () => any;
+  onClick: () => void;
   isDisabled?: boolean;
   width?: string;
   height?: string;
@@ -36,7 +36,7 @@ function Button({
   width = '100%',
   height = '100%',
   className = '',
-}: PropsTypes) {
+}: IButton) {
   return (
     <StyledButton
       disabled={isDisabled}

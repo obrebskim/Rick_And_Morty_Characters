@@ -1,9 +1,9 @@
 import fetcher from './fetcher';
 import { ICharacterResponse } from '../@types/CharacterResponseInterface';
 
-export default async function getCharacters(pageNo: number): Promise<ICharacterResponse> {
+export default async function getFavourites(favourites: number[]): Promise<ICharacterResponse> {
   return fetcher
-    .get(`?page=${pageNo}`)
+    .get(`${favourites}`)
     .then((resp) => resp.data)
     .catch((err) => console.error(err));
 }
