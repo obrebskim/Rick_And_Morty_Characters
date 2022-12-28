@@ -5,6 +5,7 @@ import StyledPagination from './Pagination.styled';
 interface IProps {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  lastPage: number;
 }
 
 enum EModifier {
@@ -12,7 +13,7 @@ enum EModifier {
   down = 'down',
 }
 
-function Pagination({ page, setPage }: IProps) {
+function Pagination({ page, setPage, lastPage }: IProps) {
   const handlePageChange = (modifier: EModifier) => {
     window.scrollTo({
       top: 0,
@@ -37,7 +38,12 @@ function Pagination({ page, setPage }: IProps) {
         onClick={() => handlePageChange(EModifier.down)}
       />
       <div className='page-info'>{page}</div>
-      <Button label='▶' className='button' onClick={() => handlePageChange(EModifier.up)} />
+      <Button
+        label='▶'
+        className='button'
+        isDisabled={page >= lastPage}
+        onClick={() => handlePageChange(EModifier.up)}
+      />
     </StyledPagination>
   );
 }

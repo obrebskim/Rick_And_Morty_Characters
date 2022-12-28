@@ -8,13 +8,15 @@ import useCharacters from '../../hooks/useCharacters';
 import useFavouritesStore from '../../hooks/useFavouritesStore';
 
 function Characters() {
-  const favourites = useFavouritesStore((state) => state.favourites);
   const [page, setPage] = useState(1);
+  const favourites = useFavouritesStore((state) => state.favourites);
   const { isLoading, isError, data } = useCharacters({ page, favourites });
 
   if (isError) return <Error />;
 
   if (isLoading) return <Loader size='160px' />;
+
+  console.log(data);
 
   return (
     <>
@@ -23,7 +25,7 @@ function Characters() {
           <CharacterItem key={ch.id} character={ch} />
         ))}
       </CharactersGrid>
-      <Pagination page={page} setPage={setPage} />
+      <Pagination page={page} setPage={setPage} lastPage={data.info.pages} />
     </>
   );
 }

@@ -25,7 +25,7 @@ function FilteredCharacters() {
           <CharacterItem key={ch.id} character={ch} />
         ))}
       </CharactersGrid>
-      <Pagination page={page} setPage={setPage} />
+      <Pagination page={page} setPage={setPage} lastPage={data.info.pages} />
     </>
   );
 }
