@@ -30,6 +30,7 @@ const StyledCharacter = styled.li<IStyledCharacter>`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.6rem;
     font-weight: bold;
     background-color: ${(props) => (props.favourite ? 'var(--green)' : 'var(--blue)')};
     border-radius: 0 0 5px 0;
@@ -64,7 +65,7 @@ const StyledCharacter = styled.li<IStyledCharacter>`
       background-color: ${(props) => (props.favourite ? 'var(--green)' : 'var(--green_dark)')};
       font-size: 16px;
       color: ${(props) => (props.favourite ? 'var(--green_dark)' : 'var(--blue)')};
-      border: 1px solid ${(props) => (props.favourite ? 'var(--green)' : 'var(--blue)')};
+      border: 2px solid ${(props) => (props.favourite ? 'var(--green)' : 'var(--blue)')};
       box-shadow: 0 0 10px ${(props) => (props.favourite ? 'var(--green)' : 'none')};
     }
   }

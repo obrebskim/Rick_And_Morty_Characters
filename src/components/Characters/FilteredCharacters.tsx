@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import useCharacters from '../../hooks/useCharacters';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
 import CharacterItem from './CharacterItem';
 import CharactersGrid from './CharactersGrid.styled';
 import Pagination from '../Pagination/Pagination';
-import useFavouritesStore from '../../hooks/useFavouritesStore';
+import useFilteredCharacters from '../../hooks/useFilteredCharacters';
+import useSearchString from '../../hooks/useSearchSring';
+import useFavouriteStore from '../../hooks/useFavouritesStore';
 
-function Characters() {
-  const favourites = useFavouritesStore((state) => state.favourites);
+function FilteredCharacters() {
   const [page, setPage] = useState(1);
-  const { isLoading, isError, data } = useCharacters({ page, favourites });
+  const favourites = useFavouriteStore((state) => state.favourites);
+  const filter = useSearchString((state) => state.string);
+  const { isLoading, isError, data } = useFilteredCharacters({ page, filter, favourites });
 
   if (isError) return <Error />;
 
@@ -28,4 +30,4 @@ function Characters() {
   );
 }
 
-export default Characters;
+export default FilteredCharacters;

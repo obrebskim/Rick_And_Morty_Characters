@@ -1,104 +1,40 @@
 import React from 'react';
-import styled from 'styled-components';
 import Button from '../common/Button';
+import StyledSearchBar from './Searchbar.styled';
+import useSearchString from '../../hooks/useSearchSring';
+import useCategoryStore from '../../hooks/useCategoryStore';
+import { ECategory } from '../../@types/CategoryEnum';
 
-interface IStyled {
-  isFilled: boolean;
-}
+function SearchBar() {
+  const setFilter = useSearchString((state) => state.setString);
+  const filter = useSearchString((state) => state.string);
+  const category = useCategoryStore((state) => state.category);
+  const changeCategory = useCategoryStore((state) => state.changeCategory);
 
-const StyledSearchBar = styled.div<IStyled>`
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-
-  & input {
-    height: 100%;
-    width: 100%;
-    padding: 5px 20px;
-    background-color: var(--green_dark);
-    color: var(--blue);
-    font-size: 1.6rem;
-    font-weight: bold;
-    border: 2px solid var(--blue);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: ${(p) => (p.isFilled ? 'var(--h:ighlight)' : 'var(--shadow)')};
-    transition: all 0.2s;
-
-    &:focus {
-      outline: none;
-      box-shadow: var(--highlight);
-    }
-
-    &:hover {
-      box-shadow: var(--highlight);
-    }
-
-    &::placeholder {
-      color: var(--blue);
-      font-weight: normal;
-      font-size: 1.2rem;
-    }
-  }
-
-  & > .button {
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    transform: none;
-    background-color: var(--green_dark);
-    border-radius: 0 2px 2px 0;
-
-    &:hover {
-      background-color: var(--blue);
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 15%;
-      left: 0;
-      bottom: 15%;
-      width: 2px;
-      background-color: var(--blue);
-    }
-
-    &.active {
-      color: var(--green_dark);
-      background-color: var(--blue);
-    }
-  }
-`;
-
-interface ISearchBar {
-  string: string;
-  setString: React.Dispatch<React.SetStateAction<string>>;
-}
-
-function SearchBar({ setString, string }: ISearchBar) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Enter') {
-      return console.log(string);
+    if (e.code === 'Enter' && category === ECategory.all) {
+      changeCategory(ECategory.search);
     }
   };
 
   return (
-    <StyledSearchBar isFilled={string.length > 2}>
+    <StyledSearchBar isFilled={filter.length > 2} isActive={category === ECategory.search}>
       <input
         type='text'
-        value={string}
-        onChange={(e) => setString(e.target.value)}
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
         placeholder='Filter by name...'
         onKeyDown={(e) => handleKeyDown(e)}
       />
-      <Button
-        className='button'
-        label='🔍'
-        height='56px'
-        width='56px'
-        onClick={() => console.log('search')}
-      />
+      {category !== ECategory.favourites ? (
+        <Button
+          className='button'
+          label='🔍'
+          height='56px'
+          width='56px'
+          onClick={() => changeCategory(ECategory.search)}
+        />
+      ) : null}
     </StyledSearchBar>
   );
 }

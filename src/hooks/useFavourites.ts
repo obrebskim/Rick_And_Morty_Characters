@@ -11,11 +11,8 @@ function useCharacters({ favourites }: IDependencies) {
   return useQuery(
     [queryKey, favourites],
     async () =>
-      getFavourites(favourites).then((data) => ({
-        info: data.info,
-        results: data.results.map((ch) => ({ ...ch, favourite: true })),
-      })),
-    { placeholderData: { info: {}, results: [] } },
+      getFavourites(favourites).then((data) => data.map((ch) => ({ ...ch, favourite: true }))),
+    { placeholderData: [] },
   );
 }
 
