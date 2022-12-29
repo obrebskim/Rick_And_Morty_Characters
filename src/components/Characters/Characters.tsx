@@ -15,7 +15,7 @@ function Characters() {
   const { isLoading, isError, data } = useCharacters({ page });
 
   useEffect(() => {
-    scrollToTopOfTheList();
+    scrollToTopOfTheList(page);
   }, [data]);
 
   if (isError) return <Error />;

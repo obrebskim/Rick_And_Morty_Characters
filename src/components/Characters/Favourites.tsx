@@ -1,6 +1,7 @@
 import React from 'react';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
+import InfoBar from '../common/InfoBar';
 import CharacterItem from './CharacterItem';
 import useFavourites from '../../hooks/useFavourites';
 import CharactersGrid from './CharactersGrid.styled';
@@ -27,7 +28,7 @@ function Favourites() {
             ))}
         </CharactersGrid>
       ) : (
-        <p>You have not favourite characters</p>
+        <InfoBar text={'You have not favourite characters yet.'} />
       )}
     </>
   );

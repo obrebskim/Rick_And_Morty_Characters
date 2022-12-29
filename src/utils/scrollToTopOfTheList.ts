@@ -1,6 +1,6 @@
-export default function () {
+export default function (pageNo: number) {
   window.scrollTo({
-    top: 0,
+    top: pageNo === 1 ? 0 : 300,
     behavior: 'smooth',
   });
 }

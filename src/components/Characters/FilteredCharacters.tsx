@@ -17,7 +17,7 @@ function FilteredCharacters() {
   const { isLoading, isError, data } = useFilteredCharacters({ page, filter, favourites });
 
   useEffect(() => {
-    scrollToTopOfTheList();
+    scrollToTopOfTheList(page);
   }, [data]);
 
   if (isError) return <Error />;
