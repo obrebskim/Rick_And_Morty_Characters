@@ -5,8 +5,10 @@ export default async function getFilteredCharacters(
   pageNo: number,
   filter: string,
 ): Promise<ICharacterResponse> {
-  return fetcher
-    .get(`?page=${pageNo}&name=${filter}`)
-    .then((resp) => resp.data)
-    .catch((err) => console.error(err));
+  try {
+    const resp = await fetcher.get(`?page=${pageNo}&name=${filter}`);
+    return resp.data;
+  } catch (err) {
+    throw new Error();
+  }
 }
