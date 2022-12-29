@@ -5,10 +5,11 @@ export default async function getFavourites(favourites: number[]): Promise<Chara
   try {
     if (favourites.length < 1) return [];
     else if (favourites.length === 1) {
-      const single: Character = await fetcher.get(`/${favourites}`);
-      return [single];
+      const single = await fetcher.get(`/${favourites}`);
+      return [single.data];
     } else {
-      return await fetcher.get(`/${favourites}`);
+      const multi = await fetcher.get(`/${favourites}`);
+      return multi.data;
     }
   } catch (err) {
     throw new Error();

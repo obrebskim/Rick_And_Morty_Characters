@@ -33,7 +33,9 @@ function Pagination({ page, setPage, lastPage }: IProps) {
         className='button'
         onClick={() => handlePageChange(EModifier.down)}
       />
-      <div className='page-info'>{page}</div>
+      <div className='page-info'>
+        {page} of {lastPage}
+      </div>
       <Button
         label='▶'
         className='button'

@@ -7,11 +7,12 @@ import Pagination from '../Pagination/Pagination';
 import useCharacters from '../../hooks/useCharacters';
 import useFavouritesStore from '../../hooks/useFavouritesStore';
 import scrollToTopOfTheList from '../../utils/scrollToTopOfTheList';
+import checkIfFavourites from '../../utils/checkIfFavourites';
 
 function Characters() {
   const [page, setPage] = useState(1);
   const favourites = useFavouritesStore((state) => state.favourites);
-  const { isLoading, isError, data } = useCharacters({ page, favourites });
+  const { isLoading, isError, data } = useCharacters({ page });
 
   useEffect(() => {
     scrollToTopOfTheList();
@@ -24,7 +25,7 @@ function Characters() {
   return (
     <>
       <CharactersGrid>
-        {data?.results.map((ch) => (
+        {checkIfFavourites(data?.results, favourites).map((ch) => (
           <CharacterItem key={ch.id} character={ch} />
         ))}
       </CharactersGrid>

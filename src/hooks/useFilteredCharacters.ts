@@ -9,15 +9,18 @@ interface IProps {
   favourites: number[];
 }
 
-function useFilteredCharacters({ page, filter, favourites }: IProps) {
+function useFilteredCharacters({ page, filter }: IProps) {
   return useQuery(
     [queryKey, page, filter],
     async () =>
       getFilteredCharacters(page, filter).then((data) => ({
         info: data.info,
-        results: data.results.map((ch) => ({ ...ch, favourite: favourites.includes(ch.id) })),
+        results: data.results,
       })),
-    { placeholderData: { info: { next: null, count: 0, pages: 0, prev: null }, results: [] } },
+    {
+      placeholderData: { info: { next: null, count: 0, pages: 0, prev: null }, results: [] },
+      refetchOnWindowFocus: false,
+    },
   );
 }
 

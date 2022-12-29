@@ -24,7 +24,7 @@ const StyledPagination = styled.section`
 
   & .page-info {
     height: 60px;
-    width: 60px;
+    width: 120px;
     display: grid;
     place-items: center;
     background-color: var(--blue);

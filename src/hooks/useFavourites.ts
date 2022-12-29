@@ -14,7 +14,7 @@ function useCharacters({ favourites }: IProps) {
       const fav = await getFavourites(favourites);
       return fav.map((ch) => ({ ...ch, favourite: true }));
     },
-    { placeholderData: [] },
+    { placeholderData: [], refetchOnWindowFocus: false },
   );
 }
 

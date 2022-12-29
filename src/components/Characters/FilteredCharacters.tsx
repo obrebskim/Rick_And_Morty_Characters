@@ -8,6 +8,7 @@ import useFilteredCharacters from '../../hooks/useFilteredCharacters';
 import useSearchString from '../../hooks/useSearchSring';
 import useFavouriteStore from '../../hooks/useFavouritesStore';
 import scrollToTopOfTheList from '../../utils/scrollToTopOfTheList';
+import checkIfFavourites from '../../utils/checkIfFavourites';
 
 function FilteredCharacters() {
   const [page, setPage] = useState(1);
@@ -26,7 +27,7 @@ function FilteredCharacters() {
   return (
     <>
       <CharactersGrid>
-        {data?.results.map((ch) => (
+        {checkIfFavourites(data?.results, favourites).map((ch) => (
           <CharacterItem key={ch.id} character={ch} />
         ))}
       </CharactersGrid>

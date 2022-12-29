@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-interface IStyledCharacter {
+interface IStyled {
   url: string;
   favourite: boolean;
   number: number;
 }
 
-const StyledCharacter = styled.li<IStyledCharacter>`
+const StyledCharacter = styled.li<IStyled>`
   position: relative;
   height: 350px;
   padding: 10px;
