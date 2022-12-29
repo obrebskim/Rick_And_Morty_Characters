@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Error from '../common/Error';
 import Loader from '../common/Loader';
+import InfoBar from '../common/InfoBar';
 import CharacterItem from './CharacterItem';
 import CharactersGrid from './CharactersGrid.styled';
 import Pagination from '../Pagination/Pagination';
@@ -14,7 +15,7 @@ function FilteredCharacters() {
   const [page, setPage] = useState(1);
   const favourites = useFavouriteStore((state) => state.favourites);
   const filter = useSearchString((state) => state.string);
-  const { isLoading, isError, data } = useFilteredCharacters({ page, filter, favourites });
+  const { isFetching, isError, data } = useFilteredCharacters({ page, filter, favourites });
 
   useEffect(() => {
     scrollToTopOfTheList(page);
@@ -22,16 +23,22 @@ function FilteredCharacters() {
 
   if (isError) return <Error />;
 
-  if (isLoading) return <Loader size='160px' />;
+  if (isFetching) return <Loader size='160px' />;
 
   return (
     <>
-      <CharactersGrid>
-        {checkIfFavourites(data?.results, favourites).map((ch) => (
-          <CharacterItem key={ch.id} character={ch} />
-        ))}
-      </CharactersGrid>
-      <Pagination page={page} setPage={setPage} lastPage={data.info.pages} />
+      {data && data.results.length > 0 ? (
+        <>
+          <CharactersGrid>
+            {checkIfFavourites(data?.results, favourites).map((ch) => (
+              <CharacterItem key={ch.id} character={ch} />
+            ))}
+          </CharactersGrid>
+          <Pagination page={page} setPage={setPage} lastPage={data.info.pages} />
+        </>
+      ) : (
+        <InfoBar text={`There is no character named '${filter}'`} />
+      )}
     </>
   );
 }
