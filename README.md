@@ -11,8 +11,8 @@ Application based on [Rick And Morty API](https://rickandmortyapi.com/). The app
 ## Features
 * [x] Browsing all characters
 * [x] Filtering characters by name
-* [x] Add characters to favourites
-* [x] Favourite Characters localStorage persist
+* [x] Adding characters to favourites
+* [x] Persisting favourite Characters localStorage
 
 ## Stack
 * App created with Vite
