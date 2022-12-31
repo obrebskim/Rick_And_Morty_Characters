@@ -26,20 +26,22 @@ const StyledButton = styled.button<IStyled>`
 
 interface IProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   isDisabled?: boolean;
   width?: string;
   height?: string;
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 function Button({
   label,
-  onClick,
+  onClick = () => null,
   isDisabled = false,
   width = '100%',
   height = '100%',
   className = '',
+  type = 'button',
 }: IProps) {
   return (
     <StyledButton
@@ -48,6 +50,7 @@ function Button({
       width={width}
       height={height}
       className={className}
+      type={type}
     >
       {label}
     </StyledButton>

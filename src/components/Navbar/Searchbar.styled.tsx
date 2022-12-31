@@ -5,7 +5,7 @@ interface IStyled {
   isActive: boolean;
 }
 
-const StyledSearchBar = styled.div<IStyled>`
+const StyledSearchBar = styled.form<IStyled>`
   position: relative;
   height: 60px;
   width: 100%;

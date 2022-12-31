@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import Button from '../common/Button';
 import StyledSearchBar from './Searchbar.styled';
 import useSearchString from '../../hooks/useSearchSring';
@@ -16,7 +16,8 @@ function SearchBar() {
     if (category !== ECategory.search) setSearchString('');
   }, [category]);
 
-  const handleSearch = () => {
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
     if (category === ECategory.all) {
       setFilter(searchString);
       changeCategory(ECategory.search);
@@ -25,30 +26,19 @@ function SearchBar() {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Enter') {
-      handleSearch();
-    }
-  };
-
   return (
-    <StyledSearchBar isFilled={filter.length > 2} isActive={category === ECategory.search}>
+    <StyledSearchBar
+      isFilled={filter.length > 2}
+      isActive={category === ECategory.search}
+      onSubmit={(e) => handleSearch(e)}
+    >
       <input
         type='text'
         value={searchString}
         onChange={(e) => setSearchString(e.target.value)}
         placeholder='Filter by name...'
-        onKeyDown={(e) => handleKeyDown(e)}
       />
-      {category !== ECategory.favourites ? (
-        <Button
-          className='button'
-          label='🔍'
-          height='56px'
-          width='56px'
-          onClick={() => handleSearch()}
-        />
-      ) : null}
+      <Button className='button' label='🔍' height='56px' width='56px' type='submit' />
     </StyledSearchBar>
   );
 }
