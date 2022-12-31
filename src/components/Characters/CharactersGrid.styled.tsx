@@ -2,19 +2,16 @@ import styled from 'styled-components';
 
 const CharactersGrid = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-auto-rows: 350px;
   gap: 40px;
 
-  & > .button {
-    font-size: 30px;
-    height: 350px;
-    &.prev {
-      grid-column: -2 / -3;
-    }
-    &.next {
-      grid-column: -1 / -2;
-    }
+  @media (min-width: 540px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 

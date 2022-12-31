@@ -7,9 +7,10 @@ interface IStyled {
 
 const StyledSearchBar = styled.div<IStyled>`
   position: relative;
-  height: 100%;
+  height: 60px;
   width: 100%;
   display: flex;
+  order: 1;
 
   & input {
     height: 100%;
@@ -45,6 +46,7 @@ const StyledSearchBar = styled.div<IStyled>`
     position: absolute;
     right: 2px;
     top: 2px;
+    width: 60px;
     transform: none;
     background-color: ${(p) => (p.isActive ? 'var(--blue)' : 'var(--green_dark)')};
     border-radius: 0 2px 2px 0;
@@ -67,6 +69,15 @@ const StyledSearchBar = styled.div<IStyled>`
       color: var(--green_dark);
       background-color: var(--blue);
     }
+  }
+
+  @media (min-width: 768px) {
+    grid-column: 1 / 3;
+    order: 0;
+  }
+
+  @media (min-width: 912px) {
+    grid-column: 1 / 2;
   }
 `;
 

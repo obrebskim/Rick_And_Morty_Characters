@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 const StyledPagination = styled.section`
   display: flex;
-  gap: 50px;
-  justify-content: center;
+  gap: 30px;
+  justify-content: space-between;
   align-items: center;
 
   & .button {
-    width: 140px;
+    //width: 140px;
+    width: 70px;
     height: 60px;
     font-size: 3rem;
     color: var(--blue);
@@ -33,6 +34,13 @@ const StyledPagination = styled.section`
     font-weight: bold;
     color: var(--green_dark);
     box-shadow: var(--shadow);
+  }
+
+  @media (min-width: 540px) {
+    justify-content: center;
+    & .button {
+      width: 140px;
+    }
   }
 `;
 

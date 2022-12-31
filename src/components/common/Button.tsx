@@ -18,6 +18,10 @@ const StyledButton = styled.button<IStyled>`
   &:active {
     transform: translateY(2px);
   }
+
+  @media (max-width: 376px) {
+    width: 100%;
+  }
 `;
 
 interface IProps {

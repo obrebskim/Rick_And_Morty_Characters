@@ -8,6 +8,7 @@ interface IStyled {
 
 const StyledCharacter = styled.li<IStyled>`
   position: relative;
+  width: 100%;
   height: 350px;
   padding: 10px;
   background-color: var(--green_dark);
@@ -62,6 +63,7 @@ const StyledCharacter = styled.li<IStyled>`
 
     & .button {
       margin-right: 10px;
+      width: 36px;
       background-color: ${(props) => (props.favourite ? 'var(--green)' : 'var(--green_dark)')};
       font-size: 16px;
       color: ${(props) => (props.favourite ? 'var(--green_dark)' : 'var(--blue)')};
