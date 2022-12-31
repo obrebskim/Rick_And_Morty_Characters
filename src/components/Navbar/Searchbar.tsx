@@ -16,14 +16,18 @@ function SearchBar() {
     if (category !== ECategory.search) setSearchString('');
   }, [category]);
 
+  const handleSearch = () => {
+    if (category === ECategory.all) {
+      setFilter(searchString);
+      changeCategory(ECategory.search);
+    } else {
+      setFilter(searchString);
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
-      if (category === ECategory.all) {
-        setFilter(searchString);
-        changeCategory(ECategory.search);
-      } else {
-        setFilter(searchString);
-      }
+      handleSearch();
     }
   };
 
@@ -42,7 +46,7 @@ function SearchBar() {
           label='🔍'
           height='56px'
           width='56px'
-          onClick={() => changeCategory(ECategory.search)}
+          onClick={() => handleSearch()}
         />
       ) : null}
     </StyledSearchBar>
