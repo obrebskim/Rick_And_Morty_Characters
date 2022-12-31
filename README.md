@@ -13,6 +13,7 @@ Application based on [Rick And Morty API](https://rickandmortyapi.com/). The app
 * [x] Filtering characters by name
 * [x] Adding characters to favourites
 * [x] Persisting favourite Characters localStorage
+* [x] RWD
 
 ## Stack
 * App created with Vite
@@ -21,9 +22,8 @@ Application based on [Rick And Morty API](https://rickandmortyapi.com/). The app
 * Tanstack Query v4
 * Zustand
 
-## Geting Started
+## Getting Started
 1. Clone repository
 2. Run project **npm run dev**
 
-## Todo
-* [ ] RWD
+
