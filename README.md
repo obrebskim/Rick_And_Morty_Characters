@@ -6,7 +6,7 @@
 
 Application based on [Rick And Morty API](https://rickandmortyapi.com/). The application is for browsing Rick And Morty TV series characters.
 
-### [Show live demo](https://ram-characters-mo.netlify.app) 👈💻
+### [See live demo](https://ram-characters-mo.netlify.app) 👈💻
 
 ## Features
 * [x] Browsing all characters
@@ -24,6 +24,7 @@ Application based on [Rick And Morty API](https://rickandmortyapi.com/). The app
 
 ## Getting Started
 1. Clone repository
+2. Install dependencies **npm install**
 2. Run project **npm run dev**
 
 
