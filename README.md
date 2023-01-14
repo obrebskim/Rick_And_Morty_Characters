@@ -4,7 +4,7 @@
 
 ## About
 
-Application based on [Rick And Morty API](https://rickandmortyapi.com/). The application is for browsing Rick And Morty TV series characters.
+Application based on [Rick And Morty API](https://rickandmortyapi.com/). The application is for browsing characters of Rick And Morty TV series.
 
 ### [See live demo](https://ram-characters-mo.netlify.app) 👈💻
 
